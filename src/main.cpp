@@ -8,6 +8,9 @@ using namespace std;
 int main() {
 	SetOfInts a;
 	srand(time(NULL));
+	a += 1;
+	a -= 1;
+	a.show();
 	for(int i = 0; i < 12; ++i) {
 		a += i;
 	}
@@ -21,5 +24,10 @@ int main() {
 	b.show();
 	a += b;
 	a.show();
+	b += 9;
+	b.show();
+	a -= b;
+	a.show();
+	
 	return 0;
 }

@@ -49,6 +49,18 @@ SetOfInts& SetOfInts::operator+= (int other) {
 }
 
 SetOfInts& SetOfInts::operator-= (SetOfInts other) {
+	int toErase = other.getFirst();
+	auto it = nums.begin();
+	for (; it != nums.end() && !other.empty(); ++it) {
+		if (*it == toErase) {
+			it = nums.erase(it);
+			it--;
+			toErase = other.getFirst();
+		}
+	}
+	if (*it == toErase) 
+		nums.erase(it);
+	return *this;
 }
 
 SetOfInts& SetOfInts::operator-= (int other) {
@@ -63,7 +75,9 @@ SetOfInts& SetOfInts::operator-= (int other) {
 
 void SetOfInts::show() {
 	auto it = nums.begin();
-	std::cout << "{" << *it;
+	std::cout << "{";
+	if (it != nums.end())
+		std::cout << *it;
 	++it;
 	for (; it != nums.end(); ++it) 
 		std::cout << ", " << *it;
