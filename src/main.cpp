@@ -8,9 +8,18 @@ using namespace std;
 int main() {
 	SetOfInts a;
 	srand(time(NULL));
-	for(int i = 0; i < 25; ++i) {
-		a += rand() % 1000;
+	for(int i = 0; i < 12; ++i) {
+		a += i;
 	}
-	a.show(100, 200);
+	a -= 5;
+	a.show();
+	
+	SetOfInts b;
+	for (int i = 10; i < 15; i += 2) {
+		b += i;
+	}
+	b.show();
+	a += b;
+	a.show();
 	return 0;
 }

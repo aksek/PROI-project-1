@@ -1,30 +1,65 @@
-#include"../include/SetOfInts.h"
+
 #include<iostream>
+#include<list>
+#include"../include/SetOfInts.h"
 
+int SetOfInts::getFirst() {
+	int firstElement = nums.front();
+	nums.pop_front();
+	return firstElement;
+}
 
-SetOfInts& SetOfInts::operator+= (SetOfInts& other) {}
+int SetOfInts::empty() {
+	return nums.empty();
+}
+
+SetOfInts& SetOfInts::operator+= (SetOfInts other) {
+	int toEmplace = other.getFirst();
+	for (auto it = nums.begin(); it != nums.end() && !other.empty(); ++it) {
+		if (*it == toEmplace)
+			toEmplace = other.getFirst();
+		else if (toEmplace < *it) {
+			nums.emplace(it, toEmplace);
+			toEmplace = other.getFirst();
+		}
+	}
+	do {
+		nums.push_back(toEmplace);
+		toEmplace = other.getFirst();
+	} while (!other.empty());
+	nums.push_back(toEmplace);
+	return *this;
+}
 
 SetOfInts& SetOfInts::operator+= (int other) {
 	auto last = --nums.end();
 	if (nums.empty() || *last < other) {
 		nums.push_back(other);
-		return *this;
 	} else {
 		for (auto it = nums.begin(); it != nums.end(); ++it) {
 			if (*it == other) {
 				break;
 			} else if (other < *it) {
 				nums.emplace(it, other);
-				return *this;
+				break;
 			}
 		}
-		
 	}
+	return *this;
 }
 
-SetOfInts& SetOfInts::operator-= (SetOfInts& other) {}
+SetOfInts& SetOfInts::operator-= (SetOfInts other) {
+}
 
-SetOfInts& SetOfInts::operator-= (int other) {}
+SetOfInts& SetOfInts::operator-= (int other) {
+	for (auto it = nums.begin(); it != nums.end(); ++it) {
+		if (*it == other) {
+			nums.erase(it);
+			break;
+		}
+	}
+	return *this;
+}
 
 void SetOfInts::show() {
 	auto it = nums.begin();
