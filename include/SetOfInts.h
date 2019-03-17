@@ -4,6 +4,7 @@
 
 #include<iostream>
 #include<list>
+#include<string>
 
 class SetOfInts{
 private: 
@@ -15,8 +16,10 @@ public:
 	SetOfInts& operator+= (int other);
 	SetOfInts& operator-= (SetOfInts other);
 	SetOfInts& operator-= (int other);
+	SetOfInts& increment();
+	SetOfInts& decrement();
 	void show();
-	void show(int min, int max);
+	void show(std::string message);
 };
 
 #endif //SETOFINTS_H

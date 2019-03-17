@@ -51,15 +51,18 @@ SetOfInts& SetOfInts::operator+= (int other) {
 SetOfInts& SetOfInts::operator-= (SetOfInts other) {
 	int toErase = other.getFirst();
 	auto it = nums.begin();
-	for (; it != nums.end() && !other.empty(); ++it) {
+	for (; it != nums.end(); ++it) {
+		while (toErase < *it && !other.empty())
+			toErase = other.getFirst();
 		if (*it == toErase) {
 			it = nums.erase(it);
-			it--;
-			toErase = other.getFirst();
+			--it;
+// 			if (!other.empty()) 
+// 				toErase = other.getFirst();
 		}
 	}
-	if (*it == toErase) 
-		nums.erase(it);
+// 	if (*it == toErase) 
+// 		nums.erase(it);
 	return *this;
 }
 
@@ -70,6 +73,18 @@ SetOfInts& SetOfInts::operator-= (int other) {
 			break;
 		}
 	}
+	return *this;
+}
+
+SetOfInts& SetOfInts::increment() {
+	for (auto it = nums.begin(); it != nums.end(); ++it) 
+		++(*it);
+	return *this;
+}
+
+SetOfInts& SetOfInts::decrement() {
+	for (auto it = nums.begin(); it != nums.end(); ++it) 
+		--(*it);
 	return *this;
 }
 
@@ -84,15 +99,13 @@ void SetOfInts::show() {
 	std::cout << "}\n";
 }
 
-void SetOfInts::show(int min, int max) {
-	std::cout << "{";
+void SetOfInts::show(std::string message) {
 	auto it = nums.begin();
-	while (*it < min)
-		++it;
-	std::cout << *it;
+	std::cout << message << "{";
+	if (it != nums.end())
+		std::cout << *it;
 	++it;
 	for (; it != nums.end(); ++it) 
-		if (*it >= min && *it <= max)
-			std::cout << ", " << *it;
+		std::cout << ", " << *it;
 	std::cout << "}\n";
 }
