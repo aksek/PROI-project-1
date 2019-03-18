@@ -9,7 +9,7 @@ int SetOfInts::getFirst() {
 	return firstElement;
 }
 
-int SetOfInts::empty() const{
+bool SetOfInts::empty() const{
 	return nums.empty();
 }
 

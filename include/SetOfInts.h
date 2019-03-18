@@ -11,7 +11,7 @@ private:
 	std::list<int> nums;
 public:
 	int getFirst();
-	int empty() const;
+	bool empty() const;
 	SetOfInts& operator+= (SetOfInts other);
 	SetOfInts& operator+= (const int other);
 	SetOfInts& operator-= (SetOfInts other);
