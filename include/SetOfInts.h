@@ -11,15 +11,15 @@ private:
 	std::list<int> nums;
 public:
 	int getFirst();
-	int empty();
+	int empty() const;
 	SetOfInts& operator+= (SetOfInts other);
-	SetOfInts& operator+= (int other);
+	SetOfInts& operator+= (const int other);
 	SetOfInts& operator-= (SetOfInts other);
-	SetOfInts& operator-= (int other);
+	SetOfInts& operator-= (const int other);
 	SetOfInts& increment();
 	SetOfInts& decrement();
-	void show();
-	void show(std::string message);
+	void show() const;
+	void show(std::string message) const;
 };
 
 #endif //SETOFINTS_H

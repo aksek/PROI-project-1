@@ -9,7 +9,7 @@ int SetOfInts::getFirst() {
 	return firstElement;
 }
 
-int SetOfInts::empty() {
+int SetOfInts::empty() const{
 	return nums.empty();
 }
 
@@ -31,7 +31,7 @@ SetOfInts& SetOfInts::operator+= (SetOfInts other) {
 	return *this;
 }
 
-SetOfInts& SetOfInts::operator+= (int other) {
+SetOfInts& SetOfInts::operator+= (const int other) {
 	auto last = --nums.end();
 	if (nums.empty() || *last < other) {
 		nums.push_back(other);
@@ -57,16 +57,13 @@ SetOfInts& SetOfInts::operator-= (SetOfInts other) {
 		if (*it == toErase) {
 			it = nums.erase(it);
 			--it;
-// 			if (!other.empty()) 
-// 				toErase = other.getFirst();
+			
 		}
 	}
-// 	if (*it == toErase) 
-// 		nums.erase(it);
 	return *this;
 }
 
-SetOfInts& SetOfInts::operator-= (int other) {
+SetOfInts& SetOfInts::operator-= (const int other) {
 	for (auto it = nums.begin(); it != nums.end(); ++it) {
 		if (*it == other) {
 			nums.erase(it);
@@ -88,7 +85,7 @@ SetOfInts& SetOfInts::decrement() {
 	return *this;
 }
 
-void SetOfInts::show() {
+void SetOfInts::show() const{
 	auto it = nums.begin();
 	std::cout << "{";
 	if (it != nums.end())
@@ -99,7 +96,7 @@ void SetOfInts::show() {
 	std::cout << "}\n";
 }
 
-void SetOfInts::show(std::string message) {
+void SetOfInts::show(std::string message) const{
 	auto it = nums.begin();
 	std::cout << message << "{";
 	if (it != nums.end())
