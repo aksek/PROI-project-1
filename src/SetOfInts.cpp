@@ -3,6 +3,8 @@
 #include<list>
 #include"../include/SetOfInts.h"
 
+using namespace std;
+
 int SetOfInts::getFirst() {
 	int firstElement = nums.front();
 	nums.pop_front();
@@ -87,22 +89,22 @@ SetOfInts& SetOfInts::decrement() {
 
 void SetOfInts::show() const{
 	auto it = nums.begin();
-	std::cout << "{";
+	cout << "{";
 	if (it != nums.end())
-		std::cout << *it;
+		cout << *it;
 	++it;
 	for (; it != nums.end(); ++it) 
-		std::cout << ", " << *it;
-	std::cout << "}\n";
+		cout << ", " << *it;
+	cout << "}\n";
 }
 
-void SetOfInts::show(std::string message) const{
+void SetOfInts::show(string message) const{
 	auto it = nums.begin();
-	std::cout << message << "{";
+	cout << message << "{";
 	if (it != nums.end())
-		std::cout << *it;
+		cout << *it;
 	++it;
 	for (; it != nums.end(); ++it) 
-		std::cout << ", " << *it;
-	std::cout << "}\n";
+		cout << ", " << *it;
+	cout << "}\n";
 }
