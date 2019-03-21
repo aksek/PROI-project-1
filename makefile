@@ -1,6 +1,6 @@
 
 CC = g++
-CFLAGS = -std=c++11 -g -Wall
+CFLAGS = -std=c++11 -g -Wall -I include
 TARGET = bin/runner
 DEPS = include/SetOfInts.h
 OBJ = build/main.o build/SetOfInts.o

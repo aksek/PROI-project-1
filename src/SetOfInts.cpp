@@ -1,7 +1,8 @@
 
 #include<iostream>
 #include<list>
-#include"../include/SetOfInts.h"
+#include<algorithm>
+#include"SetOfInts.h"
 
 using namespace std;
 
@@ -66,12 +67,10 @@ SetOfInts& SetOfInts::operator-= (SetOfInts other) {
 }
 
 SetOfInts& SetOfInts::operator-= (const int other) {
-	for (auto it = nums.begin(); it != nums.end(); ++it) {
-		if (*it == other) {
-			nums.erase(it);
-			break;
-		}
-	}
+	list<int>::iterator toErase;
+	toErase = find(nums.begin(), nums.end(), other);
+	if (toErase != nums.end()) 
+		nums.erase(toErase);
 	return *this;
 }
 
@@ -99,12 +98,6 @@ void SetOfInts::show() const{
 }
 
 void SetOfInts::show(string message) const{
-	auto it = nums.begin();
-	cout << message << "{";
-	if (it != nums.end())
-		cout << *it;
-	++it;
-	for (; it != nums.end(); ++it) 
-		cout << ", " << *it;
-	cout << "}\n";
+	cout << message;
+	show();
 }

@@ -1,7 +1,7 @@
 #include<iostream>
 #include<cstdlib>
 #include<time.h>
-#include"../include/SetOfInts.h"
+#include"SetOfInts.h"
 
 using namespace std;
 
