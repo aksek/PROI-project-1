@@ -1,4 +1,9 @@
 
+/*  Assignment:   Project #1
+ *      Author:   Aniela Kosek, 300234
+ *      Grader:   Wiktor Kuśmirek
+ */
+
 #ifndef SETOFINTS_H
 #define SETOFINTS_H
 
