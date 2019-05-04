@@ -1,3 +1,8 @@
+/*  Assignment:   Project #1
+ *      Author:   Aniela Kosek, 300234
+ *      Grader:   Wiktor Kuśmirek
+ */
+
 #include<iostream>
 #include<cstdlib>
 #include<time.h>
